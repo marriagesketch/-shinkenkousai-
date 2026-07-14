@@ -1,0 +1,136 @@
+画像サイズを解析し、実際のピクセル座標（2500×1686px、LINE推奨サイズちょうどでした）から罫線位置を正確に測定しました。以下がその座標です。
+
+**共通の区切り位置**
+- ヘッダー下端：y = 223
+- ヘッダー左右の境目：x = 1250
+- 3列カードの境目：x = 836 / x = 1663
+- 上段・下段の境目（画像1のみ）：y = 1221
+
+これに基づいた全文です。
+
+## 1. リッチメニューA（プレ交際）を作成
+
+```bash
+curl -v -X POST https://api.line.me/v2/bot/richmenu \
+-H 'Authorization: Bearer {channel access token}' \
+-H 'Content-Type: application/json' \
+-d '{
+    "size": { "width": 2500, "height": 1686 },
+    "selected": true,
+    "name": "richmenu-pre",
+    "chatBarText": "メニュー",
+    "areas": [
+        {
+            "bounds": { "x": 1250, "y": 0, "width": 1250, "height": 223 },
+            "action": {
+                "type": "richmenuswitch",
+                "richMenuAliasId": "richmenu-alias-shinken",
+                "data": "switch-to-shinken"
+            }
+        },
+        {
+            "bounds": { "x": 0, "y": 223, "width": 836, "height": 998 },
+            "action": { "type": "uri", "uri": "https://miniapp.line.me/{自己開示Part1のliffId}" }
+        },
+        {
+            "bounds": { "x": 836, "y": 223, "width": 827, "height": 998 },
+            "action": { "type": "uri", "uri": "https://miniapp.line.me/{自己開示Part2のliffId}" }
+        },
+        {
+            "bounds": { "x": 1663, "y": 223, "width": 837, "height": 998 },
+            "action": { "type": "uri", "uri": "https://miniapp.line.me/{自己開示Part3のliffId}" }
+        },
+        {
+            "bounds": { "x": 0, "y": 1221, "width": 1250, "height": 465 },
+            "action": { "type": "uri", "uri": "https://miniapp.line.me/{婚活プロフィールのliffId}" }
+        },
+        {
+            "bounds": { "x": 1250, "y": 1221, "width": 1250, "height": 465 },
+            "action": { "type": "uri", "uri": "https://miniapp.line.me/{価値観すり合わせのliffId}" }
+        }
+    ]
+}'
+```
+
+画像アップロード：
+
+```bash
+curl -v -X POST https://api-data.line.me/v2/bot/richmenu/{richMenuId_A}/content \
+-H 'Authorization: Bearer {channel access token}' \
+-H "Content-Type: image/png" \
+-T richmenu-pre.png
+```
+
+## 2. リッチメニューB（真剣交際）を作成
+
+```bash
+curl -v -X POST https://api.line.me/v2/bot/richmenu \
+-H 'Authorization: Bearer {channel access token}' \
+-H 'Content-Type: application/json' \
+-d '{
+    "size": { "width": 2500, "height": 1686 },
+    "selected": false,
+    "name": "richmenu-shinken",
+    "chatBarText": "メニュー",
+    "areas": [
+        {
+            "bounds": { "x": 0, "y": 0, "width": 1250, "height": 223 },
+            "action": {
+                "type": "richmenuswitch",
+                "richMenuAliasId": "richmenu-alias-pre",
+                "data": "switch-to-pre"
+            }
+        },
+        {
+            "bounds": { "x": 0, "y": 223, "width": 836, "height": 1463 },
+            "action": { "type": "uri", "uri": "https://miniapp.line.me/{真剣交際後の確認のliffId}" }
+        },
+        {
+            "bounds": { "x": 836, "y": 223, "width": 827, "height": 1463 },
+            "action": { "type": "uri", "uri": "https://miniapp.line.me/{家条件すり合わせのliffId}" }
+        },
+        {
+            "bounds": { "x": 1663, "y": 223, "width": 837, "height": 1463 },
+            "action": { "type": "uri", "uri": "https://miniapp.line.me/{家族紹介のliffId}" }
+        }
+    ]
+}'
+```
+
+画像アップロード：
+
+```bash
+curl -v -X POST https://api-data.line.me/v2/bot/richmenu/{richMenuId_B}/content \
+-H 'Authorization: Bearer {channel access token}' \
+-H "Content-Type: image/png" \
+-T richmenu-shinken.png
+```
+
+## 3. デフォルトメニューに設定（初期表示はA）
+
+```bash
+curl -v -X POST https://api.line.me/v2/bot/user/all/richmenu/{richMenuId_A} \
+-H 'Authorization: Bearer {channel access token}'
+```
+
+## 4. エイリアスを作成（タブ切り替えの要）
+
+```bash
+curl -v -X POST https://api.line.me/v2/bot/richmenu/alias \
+-H 'Authorization: Bearer {channel access token}' \
+-H 'Content-Type: application/json' \
+-d '{
+    "richMenuAliasId": "richmenu-alias-pre",
+    "richMenuId": "{richMenuId_A}"
+}'
+
+curl -v -X POST https://api.line.me/v2/bot/richmenu/alias \
+-H 'Authorization: Bearer {channel access token}' \
+-H 'Content-Type: application/json' \
+-d '{
+    "richMenuAliasId": "richmenu-alias-shinken",
+    "richMenuId": "{richMenuId_B}"
+}'
+```
+
+置き換えが必要な箇所は `{channel access token}`、`{richMenuId_A}`、`{richMenuId_B}`、各カードの `{...のliffId}` です。実行順序は上から1→2→3→4のままでOKです。
