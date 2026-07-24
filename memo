@@ -1,0 +1,151 @@
+Q1 真剣交際に進もうと思ったのはなぜですか？パートナーのどんなところがいいなと思っていますか？
+Q2 この際だから言っておきたい、パートナーへの不満やもっとしてほしいことを伝えておきましょう。
+Q3 家事分担について、ルールを決めておきたいですか？
+Q4 年収はいくらですか？今年の見込み年収を教えてください。副業があれば、本業、副業それぞれいくらかも教えてください。
+Q5 貯金はいくらありますか？現金での貯金額を教えてください。
+>Q6 株などの金融資産や不動産など、現金以外での貯蓄があれば、何を持っているか、必要であれば現金化できるようなものか教えてください。
+Q7 現在の支出状況について教えてください。
+Q8 現在の勤め先で、結婚休暇などの結婚支援制度はありますか？あれば具体的に教えてください。
+Q9 現在の勤め先で、出産・育児支援制度はどんなものがありますか？
+Q10 ベッド、寝室について理想はありますか？
+Q11 結納や両家顔合わせはしますか？
+Q12 婚約指輪はほしいですか？もしくはあげたいですか？
+<label><input type="radio" name="q12" value="a12-1">ほしい、もしくはあげたい
+<label><input type="radio" name="q12" value="a12-2">相手が望むならあげたい
+<label><input type="radio" name="q12" value="a12-3">ほしくない、もしくはあげたくない
+
+<!-- Q13 -->
+<label>Q13 結婚指輪はほしいですか？
+<label><input type="radio" name="q13" value="a13-1">ほしい
+<label><input type="radio" name="q13" value="a13-2">相手が望むならほしい
+<label><input type="radio" name="q13" value="a13-3">自分はいらないが、相手が望むなら相手の分はあげたい
+<label><input type="radio" name="q13" value="a13-4">自分はほしいが、相手の分は相手の意思に任せる
+<label><input type="radio" name="q13" value="a13-5">ほしくないし、あげたくもない
+
+<!-- Q14 -->
+<label>Q14 結婚式はしたいですか？
+<label><input type="radio" name="q14" value="a14-1">したい
+<label><input type="radio" name="q14" value="a14-2">相手が望むならしてもよい
+<label><input type="radio" name="q14" value="a14-3">したくない
+
+<!-- Q15 -->
+<label>Q15 フォトウェディングはしたいですか？
+<label><input type="radio" name="q15" value="a15-1">したい
+<label><input type="radio" name="q15" value="a15-2">相手が望むならしてもよい
+<label><input type="radio" name="q15" value="a15-3">したくない
+
+<!-- Q16 -->
+<label>Q16 新婚旅行は行きたいですか？
+<label><input type="radio" name="q16" value="a16-1">海外旅行に行きたい
+<label><input type="radio" name="q16" value="a16-2">国内旅行に行きたい
+<label><input type="radio" name="q16" value="a16-3">新婚旅行に行くことはあまり考えていない
+
+<!-- Q17 -->
+<label>Q17 婚前契約書の作成はしたいですか？
+<label><input type="radio" name="q17" value="a17-1">作成したい
+<label><input type="radio" name="q17" value="a17-2">特に考えたことがない
+
+<!-- Q18 -->
+<label>Q18 真剣交際前に告知していた以外に持病やアレルギーはありますか？もしもの時病院で家族として伝えられるように些細なことも伝えておきましょう。
+<textarea id="q18" class="detail-textarea"></textarea>
+
+<!-- Q19 -->
+<label>Q19 日常的に服薬している薬などはありますか？それらを記録しているお薬手帳もしくはスマホアプリなどをパートナーと共有しておきましょう。
+<textarea id="q19" class="detail-textarea"></textarea>
+
+<!-- Q20 -->
+<label>Q20 持病やアレルギーを抑えるための頓服薬などはありますか？ある場合はどこに保管、所持するようにしているかも教えてください。また使い方が特殊なものはパートナーが補助できるように使い方も事前に教えておきましょう。
+<textarea id="q20" class="detail-textarea"></textarea>
+
+<!-- Q21 -->
+<label>Q21 過去の既往歴、手術歴はありますか？いつも病院のカルテで書いているような、医師に伝えるべき既往歴についてパートナーとも共有しておきましょう。
+<textarea id="q21" class="detail-textarea"></textarea>
+
+<!-- Q22 -->
+<label>Q22 もしもの時、延命措置や臓器移植などの希望はありますか？パートナーにも伝えておくようにしましょう。
+<textarea id="q22" class="detail-textarea"></textarea>
+
+<!-- Q23 -->
+<label>Q23 お金の管理方法
+<label><input type="radio" name="q23" value="a23-1">どちらかに管理をお願いし、お小遣い制にする
+<label><input type="radio" name="q23" value="a23-2">共同口座を作り、生活費や将来のための貯蓄を定期的にお互い入金する
+<label><input type="radio" name="q23" value="a23-3">原則それぞれで管理し、支出が必要になるタイミングで支払う
+<label><input type="radio" name="q23" value="a23-4">その他
+
+<!-- Q24 -->
+<label>Q24 大きい買い物をするときは個人の買い物であっても相談したいですか？
+
+<label>
+  <input type="radio" name="q24" value="a24-1">
+  大きい額のときは相談したい、してほしい
+
+
+<label>いくら以上ですか？
+<textarea id="q24Detail" class="detail-textarea"></textarea>
+
+<label>
+  <input type="radio" name="q24" value="a24-2">
+  個人の買い物は相談しなくてよい
+
+
+<!-- Q25 -->
+<label>Q25 毎月どれくらい貯蓄したいですか？
+<textarea id="q25" class="detail-textarea"></textarea>
+
+<!-- Q26 -->
+<label>Q26 投資はしたいですか？
+<textarea id="q26" class="detail-textarea"></textarea>
+
+<!-- Q27 -->
+<label>Q27 保険への加入や、すでに加入している方はプランの変更など考えていますか？
+<textarea id="q27" class="detail-textarea"></textarea>
+
+<!-- Q28 -->
+<label>Q28 将来は何歳くらいまで働きたいですか？定年後も再雇用や非正規雇用で働き続けたいですか？
+<textarea id="q28" class="detail-textarea"></textarea>
+
+<!-- Q29 -->
+<label>Q29 将来、自分の親の介護が必要になった場合の現時点での計画はありますか？
+<textarea id="q29" class="detail-textarea"></textarea>
+
+<!-- Q30 -->
+<label>Q30 パートナーのSNSへ自身の写真が掲載されてもよいですか？
+<label><input type="radio" name="q30" value="a30-1">掲載してもよい
+<label><input type="radio" name="q30" value="a30-2">鍵付きのアカウントであれば掲載してもよい
+<label><input type="radio" name="q30" value="a30-3">掲載してもよいが公開前に相談してほしい、写真のチェックをしたい
+<label><input type="radio" name="q30" value="a30-4">顔がわからないような写真であれば写っていてもよい
+<label><input type="radio" name="q30" value="a30-5">掲載しないでほしい
+
+<!-- Q31 -->
+<label>Q31 死亡時や働けなくなった時、会社独自の給与補償のようなものはありますか？
+<textarea id="q31" class="detail-textarea"></textarea>
+
+<!-- Q32 -->
+<label>Q32 結婚後、定期的な話し合いの機会を設けますか？
+<label><input type="radio" name="q32" value="a32-1">月に1回以上話し合う約束をしたい
+<label><input type="radio" name="q32" value="a32-2">1シーズンに1回以上話し合う約束をしたい
+<label><input type="radio" name="q32" value="a32-3">半年に1回以上話し合う約束をしたい
+<label><input type="radio" name="q32" value="a32-4">1年に1回以上話し合う約束をしたい
+<label><input type="radio" name="q32" value="a32-5">頻度は決めず、気になったときに話し合いたい
+
+<div class="button-group">
+  <button id="submitBtn" type="button">送信</button>
+  <div class="sub-buttons">
+    <button id="draftBtn" type="button">下書き保存</button>
+    <button id="clearBtn" type="button">フォームクリア</button>
+  </div>
+</div>
+
+<!-- 共有モーダル -->
+<div id="shareModal" class="modal hidden">
+  <div class="modal-content">
+    <h3>共有</h3>
+    <input id="shareName" placeholder="お名前を入力してください（任意）">
+    <button id="shareBtn">共有する</button>
+  </div>
+</div>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>
