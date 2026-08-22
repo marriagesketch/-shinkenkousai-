@@ -93,7 +93,9 @@ https://api.line.me/v2/bot/richmenu
 - 画面下部に結果が表示されます
 
 ```json
-{"richMenuId":"richmenu-xxxxxxxxxxxxxxxxxxxx"}
+{
+    "richMenuId": "richmenu-9e9cca5bef53a7097cf80e93def32a8a"
+}
 ```
 
 👉 この `richmenu-xxxxxxxxxxxxxxxxxxxx` を**メモ帳などにコピー保存**してください。これを以後 `{richMenuId_A}` とします。
