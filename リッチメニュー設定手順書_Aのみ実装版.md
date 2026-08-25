@@ -83,7 +83,7 @@ https://api.line.me/v2/bot/richmenu
 - 返ってきたレスポンスの中の `richMenuId` をメモ帳などに保存
 
 ```json
-{"richMenuId":"richmenu-xxxxxxxxxxxxxxxxxxxx"}
+{"richMenuId": "richmenu-7ff571b73460604c1f44e7ecdd1af8a7"}
 ```
 
 👉 これを以後 `{richMenuId_A}` とします。
@@ -96,7 +96,7 @@ https://api.line.me/v2/bot/richmenu
 - メソッド：**POST**
 - URL（`{richMenuId_A}` を実際のIDに置き換え）：
 ```
-https://api-data.line.me/v2/bot/richmenu/{richMenuId_A}/content
+https://api-data.line.me/v2/bot/richmenu/richmenu-7ff571b73460604c1f44e7ecdd1af8a7/content
 ```
 - Headers：
 
@@ -121,7 +121,7 @@ https://api-data.line.me/v2/bot/richmenu/{richMenuId_A}/content
 - メソッド：**POST**
 - URL（`{richMenuId_A}` を実際のIDに置き換え）：
 ```
-https://api.line.me/v2/bot/user/all/richmenu/{richMenuId_A}
+https://api.line.me/v2/bot/user/all/richmenu/richmenu-7ff571b73460604c1f44e7ecdd1af8a7
 ```
 - Headers：
 
