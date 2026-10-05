@@ -7,7 +7,7 @@
    （URLの # 以降はブラウザからサーバーへ送信されないため）。
    ============================================================ */
 
-const LIFF_ID   = "YOUR_LIFF_ID_HERE"; // ← デプロイ先のLIFF IDに差し替える
+const LIFF_ID   = "2010312230-yRtDTHxa"; // 
 const DRAFT_KEY = "konyaku_zenno_kakunin_draft";
 const PENDING_SHARED_VIEW_KEY = "konyaku_zenno_kakunin_pending_shared_view";
 
