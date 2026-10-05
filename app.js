@@ -12,7 +12,7 @@ const DRAFT_KEY = "konyaku_zenno_kakunin_draft";
 const PENDING_SHARED_VIEW_KEY = "konyaku_zenno_kakunin_pending_shared_view";
 
 // ▼▼▼ デプロイ済みGAS Web AppのURL ▼▼▼
-const GAS_ENDPOINT = "YOUR_GAS_WEBAPP_EXEC_URL_HERE";
+const GAS_ENDPOINT = "https://script.google.com/macros/s/AKfycbxVMevWWyHLFcNiTIN-zyad4uZOMuVCxlipFJrMDPXYZQSSXnI7tZaicDAc1zNMfDAAOA/exec";
 
 /* ============================================================
    質問定義（HTML・app.js・code.gs で質問番号を統一するための唯一の情報源）
