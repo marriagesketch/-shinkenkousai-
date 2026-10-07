@@ -29,43 +29,49 @@ const QUESTIONS = [
       { value: "a4-1", text: "決めたい" },
       { value: "a4-2", text: "一緒に暮らし始めてから決めたい" },
       { value: "a4-3", text: "ルールは決めずにやっていきたい" },
+      { value: "a4-4", text: "回答しない" },
     ] },
-  { id: "q5",  type: "text",  label: "Q5 将来は何歳くらいまで働きたいですか？定年後も再雇用や非正規雇用で働き続けたいですか？" },
-  { id: "q6",  type: "text",  label: "Q6 将来、自分の親の介護が必要になった場合の現時点での計画はありますか？" },
-  { id: "q7",  type: "text",  label: "Q7 年収はいくらですか？今年の見込み年収を教えてください。副業があれば、本業、副業それぞれいくらかも教えてください。" },
-  { id: "q8",  type: "text",  label: "Q8 貯金はいくらありますか？現金での貯金額を教えてください。" },
-  { id: "q9",  type: "text",  label: "Q9 株などの金融資産や不動産など、現金以外での貯蓄があれば、何を持っているか、必要であれば現金化できるようなものか教えてください。" },
-  { id: "q10", type: "text",  label: "Q10 現在の支出状況について教えてください。" },
+  { id: "q5",  type: "text",  label: "Q5 将来は何歳くらいまで働きたいですか？定年後も再雇用や非正規雇用で働き続けたいですか？", noAnswerValue: "a5_no" },
+  { id: "q6",  type: "text",  label: "Q6 将来、自分の親の介護が必要になった場合の現時点での計画はありますか？", noAnswerValue: "a6_no" },
+  { id: "q7",  type: "text",  label: "Q7 年収はいくらですか？今年の見込み年収を教えてください。副業があれば、本業、副業それぞれいくらかも教えてください。", noAnswerValue: "a7_no" },
+  { id: "q8",  type: "text",  label: "Q8 貯金はいくらありますか？現金での貯金額を教えてください。", noAnswerValue: "a8_no" },
+  { id: "q9",  type: "text",  label: "Q9 株などの金融資産や不動産など、現金以外での貯蓄があれば、何を持っているか、必要であれば現金化できるようなものか教えてください。", noAnswerValue: "a9_no" },
+  { id: "q10", type: "text",  label: "Q10 現在の支出状況について教えてください。", noAnswerValue: "a10_no" },
   { id: "q11", type: "radio", label: "Q11 お金の管理方法はどうしたいですか？", detailId: "q11Detail", detailShowValues: ["a11-4"], options: [
       { value: "a11-1", text: "どちらかに管理をお願いし、お小遣い制にする" },
       { value: "a11-2", text: "共同口座を作り、生活費や将来のための貯蓄を定期的にお互い入金する" },
       { value: "a11-3", text: "原則それぞれで管理し、支出が必要になるタイミングで支払う" },
       { value: "a11-4", text: "その他" },
+      { value: "a11_no", text: "回答しない" },
     ] },
-  { id: "q12", type: "radio", label: "Q12 大きい買い物をするときは個人の買い物であっても相談したいですか？", detailId: "q12Detail", detailShowValues: ["a12-1"], options: [
+  { id: "q12", type: "radio", label: "Q12 大きい買い物をするときは個人の買い物であっても相談したいですか？", detailId: "q12Detail", detailLabelId: "q12DetailLabel", detailShowValues: ["a12-1"], options: [
       { value: "a12-1", text: "大きい額のときは相談したい、してほしい" },
       { value: "a12-2", text: "個人の買い物は相談しなくてよい" },
+      { value: "a12_no", text: "回答しない" },
     ] },
-  { id: "q13", type: "text",  label: "Q13 毎月どれくらい貯蓄したいですか？" },
-  { id: "q14", type: "text",  label: "Q14 投資はしたいですか？" },
-  { id: "q15", type: "text",  label: "Q15 保険への加入や、すでに加入している方はプランの変更など考えていますか？" },
-  { id: "q16", type: "text",  label: "Q16 現在の勤め先で、結婚休暇などの結婚支援制度はありますか？あれば具体的に教えてください。" },
-  { id: "q17", type: "text",  label: "Q17 現在の勤め先で、出産・育児支援制度はどんなものがありますか？" },
-  { id: "q18", type: "text",  label: "Q18 死亡時や働けなくなった時、会社独自の給与補償のようなものはありますか？" },
+  { id: "q13", type: "text",  label: "Q13 毎月どれくらい貯蓄したいですか？", noAnswerValue: "a13_no" },
+  { id: "q14", type: "text",  label: "Q14 投資はしたいですか？", noAnswerValue: "a14_no" },
+  { id: "q15", type: "text",  label: "Q15 保険への加入や、すでに加入している方はプランの変更など考えていますか？", noAnswerValue: "a15_no" },
+  { id: "q16", type: "text",  label: "Q16 現在の勤め先で、結婚休暇などの結婚支援制度はありますか？あれば具体的に教えてください。", noAnswerValue: "a16_no" },
+  { id: "q17", type: "text",  label: "Q17 現在の勤め先で、出産・育児支援制度はどんなものがありますか？", noAnswerValue: "a17_no" },
+  { id: "q18", type: "text",  label: "Q18 死亡時や働けなくなった時、会社独自の給与補償のようなものはありますか？", noAnswerValue: "a18_no" },
   { id: "q19", type: "radio", label: "Q19 ベッド、寝室について理想はありますか？", options: [
       { value: "a19-1", text: "大きめのベッドで一緒に寝たい" },
       { value: "a19-2", text: "同じ寝室でベッドは分けたい" },
       { value: "a19-3", text: "寝室を分けたい" },
+      { value: "a19_no", text: "回答しない" },
     ] },
   { id: "q20", type: "radio", label: "Q20 結納や両家顔合わせはしますか？", options: [
       { value: "a20-1", text: "したい" },
       { value: "a20-2", text: "するつもりはないがお相手次第" },
       { value: "a20-3", text: "自身の両親と話していないので後日相談させてほしい" },
+      { value: "a20_no", text: "回答しない" },
     ] },
   { id: "q21", type: "radio", label: "Q21 婚約指輪はほしいですか？もしくはあげたいですか？", options: [
       { value: "a21-1", text: "ほしい、もしくはあげたい" },
       { value: "a21-2", text: "相手が望むならあげたい" },
       { value: "a21-3", text: "ほしくない、もしくはあげたくない" },
+      { value: "a21_no", text: "回答しない" },
     ] },
   { id: "q22", type: "radio", label: "Q22 結婚指輪はほしいですか？", options: [
       { value: "a22-1", text: "ほしい" },
@@ -73,67 +79,65 @@ const QUESTIONS = [
       { value: "a22-3", text: "自分はいらないが、相手が望むなら相手の分はあげたい" },
       { value: "a22-4", text: "自分はほしいが、相手の分は相手の意思に任せる" },
       { value: "a22-5", text: "ほしくないし、あげたくもない" },
+      { value: "a22_no", text: "回答しない" },
     ] },
   { id: "q23", type: "radio", label: "Q23 結婚式はしたいですか？", options: [
       { value: "a23-1", text: "したい" },
       { value: "a23-2", text: "相手が望むならしてもよい" },
       { value: "a23-3", text: "したくない" },
+      { value: "a23_no", text: "回答しない" },
     ] },
   { id: "q24", type: "radio", label: "Q24 フォトウェディングはしたいですか？", options: [
       { value: "a24-1", text: "したい" },
       { value: "a24-2", text: "相手が望むならしてもよい" },
       { value: "a24-3", text: "したくない" },
+      { value: "a24_no", text: "回答しない" },
     ] },
   { id: "q25", type: "radio", label: "Q25 新婚旅行は行きたいですか？", options: [
       { value: "a25-1", text: "海外旅行に行きたい" },
       { value: "a25-2", text: "国内旅行に行きたい" },
       { value: "a25-3", text: "新婚旅行に行くことはあまり考えていない" },
+      { value: "a25_no", text: "回答しない" },
     ] },
   { id: "q26", type: "radio", label: "Q26 婚前契約書の作成はしたいですか？", options: [
       { value: "a26-1", text: "作成したい" },
       { value: "a26-2", text: "特に考えたことがない" },
+      { value: "a26_no", text: "回答しない" },
     ] },
-  { id: "q27", type: "text",  label: "Q27 真剣交際前に告知していた以外に持病やアレルギーはありますか？もしもの時病院で家族として伝えられるように些細なことも伝えておきましょう。" },
-  { id: "q28", type: "text",  label: "Q28 日常的に服薬している薬などはありますか？それらを記録しているお薬手帳もしくはスマホアプリなどをパートナーと共有しておきましょう。" },
-  { id: "q29", type: "text",  label: "Q29 持病やアレルギーを抑えるための頓服薬などはありますか？ある場合はどこに保管、所持するようにしているかも教えてください。また使い方が特殊なものはパートナーが補助できるように使い方も事前に教えておきましょう。" },
-  { id: "q30", type: "text",  label: "Q30 過去の既往歴、手術歴はありますか？いつも病院の問診票で書いているような、医師に伝えるべき既往歴についてパートナーとも共有しておきましょう。" },
-  { id: "q31", type: "text",  label: "Q31 もしもの時、延命措置や臓器移植などの希望はありますか？パートナーにも伝えておくようにしましょう。" },
-  /* Q32〜Q34：アップロードいただいたHTMLの内容をそのまま反映（3問とも同一内容）。
-     本来はそれぞれ別の質問文・選択肢が入る想定とみられるため、内容確定後に要差し替え。 */
-  { id: "q32", type: "radio", label: "Q32 パートナーの友人付き合いについて、どこまで関与しても平気ですか？", options: [
-      { value: "a32-1", text: "パートナーの友人" },
-      { value: "a32-2", text: "1シーズンに1回以上話し合う約束をしたい" },
-      { value: "a32-3", text: "半年に1回以上話し合う約束をしたい" },
-      { value: "a32-4", text: "1年に1回以上話し合う約束をしたい" },
-      { value: "a32-5", text: "頻度は決めず、気になったときに話し合いたい" },
+  { id: "q27", type: "text",  label: "Q27 真剣交際前に告知していた以外に持病やアレルギーはありますか？もしもの時病院で家族として伝えられるように些細なことも伝えておきましょう。", noAnswerValue: "a27_no" },
+  { id: "q28", type: "text",  label: "Q28 日常的に服薬している薬などはありますか？それらを記録しているお薬手帳もしくはスマホアプリなどをパートナーと共有しておきましょう。", noAnswerValue: "a28_no" },
+  { id: "q29", type: "text",  label: "Q29 持病やアレルギーを抑えるための頓服薬などはありますか？ある場合はどこに保管、所持するようにしているかも教えてください。また使い方が特殊なものはパートナーが補助できるように使い方も事前に教えておきましょう。", noAnswerValue: "a29_no" },
+  { id: "q30", type: "text",  label: "Q30 過去の既往歴、手術歴はありますか？いつも病院の問診票で書いているような、医師に伝えるべき既往歴についてパートナーとも共有しておきましょう。", noAnswerValue: "a30_no" },
+  { id: "q31", type: "text",  label: "Q31 もしもの時、延命措置や臓器移植などの希望はありますか？パートナーにも伝えておくようにしましょう。", noAnswerValue: "a31_no" },
+  { id: "q32", type: "radio", label: "Q32 義家族付き合いについて、どこまで関与しても平気ですか？", options: [
+      { value: "a32-1", text: "義家族とも積極的に交流したい" },
+      { value: "a32-2", text: "積極的に関わりたいわけではないが、義家族も交えて遊んだり家に来てもよい" },
+      { value: "a32-3", text: "義家族が家に遊びに来てもよいが、そのときは外出するなどあまり会いたくはない" },
+      { value: "a32-4", text: "義家族はあまり家にきてほしくない" },
+      { value: "a32_no", text: "回答しない" },
     ] },
   { id: "q33", type: "radio", label: "Q33 パートナーの友人付き合いについて、どこまで関与しても平気ですか？", options: [
-      { value: "a33-1", text: "パートナーの友人" },
-      { value: "a33-2", text: "1シーズンに1回以上話し合う約束をしたい" },
-      { value: "a33-3", text: "半年に1回以上話し合う約束をしたい" },
-      { value: "a33-4", text: "1年に1回以上話し合う約束をしたい" },
-      { value: "a33-5", text: "頻度は決めず、気になったときに話し合いたい" },
+      { value: "a33-1", text: "パートナーの友人とも積極的に交流したい" },
+      { value: "a33-2", text: "積極的に関わりたいわけではないが、パートナーの友人も交えて遊んだり家に来てもよい" },
+      { value: "a33-3", text: "パートナーの友人が家に遊びに来てもよいが、そのときは外出するなどあまり会いたくはない" },
+      { value: "a33-4", text: "パートナーの友人はあまり家にきてほしくない" },
+      { value: "a33_no", text: "回答しない" },
     ] },
-  { id: "q34", type: "radio", label: "Q34 パートナーの友人付き合いについて、どこまで関与しても平気ですか？", options: [
-      { value: "a34-1", text: "パートナーの友人" },
-      { value: "a34-2", text: "1シーズンに1回以上話し合う約束をしたい" },
-      { value: "a34-3", text: "半年に1回以上話し合う約束をしたい" },
-      { value: "a34-4", text: "1年に1回以上話し合う約束をしたい" },
-      { value: "a34-5", text: "頻度は決めず、気になったときに話し合いたい" },
+  { id: "q34", type: "radio", label: "Q34 パートナーのSNSへ自身の写真が掲載されてもよいですか？", options: [
+      { value: "a34-1", text: "掲載してもよい" },
+      { value: "a34-2", text: "鍵付きのアカウントであれば掲載してもよい" },
+      { value: "a34-3", text: "掲載してもよいが公開前に相談してほしい、写真のチェックをしたい" },
+      { value: "a34-4", text: "顔がわからないような写真であれば写っていてもよい" },
+      { value: "a34-5", text: "掲載しないでほしい" },
+      { value: "a34_no", text: "回答しない" },
     ] },
-  { id: "q35", type: "radio", label: "Q35 パートナーのSNSへ自身の写真が掲載されてもよいですか？", options: [
-      { value: "a35-1", text: "掲載してもよい" },
-      { value: "a35-2", text: "鍵付きのアカウントであれば掲載してもよい" },
-      { value: "a35-3", text: "掲載してもよいが公開前に相談してほしい、写真のチェックをしたい" },
-      { value: "a35-4", text: "顔がわからないような写真であれば写っていてもよい" },
-      { value: "a35-5", text: "掲載しないでほしい" },
-    ] },
-  { id: "q36", type: "radio", label: "Q36 結婚後、定期的な話し合いの機会を設けますか？", options: [
-      { value: "a36-1", text: "月に1回以上話し合う約束をしたい" },
-      { value: "a36-2", text: "1シーズンに1回以上話し合う約束をしたい" },
-      { value: "a36-3", text: "半年に1回以上話し合う約束をしたい" },
-      { value: "a36-4", text: "1年に1回以上話し合う約束をしたい" },
-      { value: "a36-5", text: "頻度は決めず、気になったときに話し合いたい" },
+  { id: "q35", type: "radio", label: "Q35 結婚後、定期的な話し合いの機会を設けますか？", options: [
+      { value: "a35-1", text: "月に1回以上話し合う約束をしたい" },
+      { value: "a35-2", text: "1シーズンに1回以上話し合う約束をしたい" },
+      { value: "a35-3", text: "半年に1回以上話し合う約束をしたい" },
+      { value: "a35-4", text: "1年に1回以上話し合う約束をしたい" },
+      { value: "a35-5", text: "頻度は決めず、気になったときに話し合いたい" },
+      { value: "a35_no", text: "回答しない" },
     ] },
 ];
 
@@ -246,23 +250,39 @@ function radioOptionLabel(q, value) {
 }
 
 /* ============================================================
-   詳細テキストエリアの表示・非表示
+   詳細テキストエリア（＋付随ラベル）の表示・非表示
+   q.detailId は必須、q.detailLabelId があれば一緒に表示切替する
+   （例: Q12の「いくら以上ですか？」ラベル）。
    ============================================================ */
-function toggleDetail(id, show) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.style.display = show ? "block" : "none";
-  if (!show) el.value = "";
+function toggleDetailGroup(q, show) {
+  const ids = [q.detailId];
+  if (q.detailLabelId) ids.push(q.detailLabelId);
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.style.display = show ? "block" : "none";
+  });
+  if (!show) {
+    const ta = document.getElementById(q.detailId);
+    if (ta) ta.value = "";
+  }
 }
 
 /* ============================================================
    フォーム値の収集
+   ・text かつ noAnswerValue が設定されている設問は、
+     「回答しない」ラジオが選択されていればその値を、
+     そうでなければテキストエリアの内容を採用する。
    ============================================================ */
 function collectFormData() {
   const data = {};
   QUESTIONS.forEach(q => {
     if (q.type === "text") {
-      data[q.id] = getText(q.id);
+      if (q.noAnswerValue && getRadio(q.id) === q.noAnswerValue) {
+        data[q.id] = q.noAnswerValue;
+      } else {
+        data[q.id] = getText(q.id);
+      }
     } else if (q.type === "radio") {
       data[q.id] = getRadio(q.id);
       if (q.detailId) data[q.detailId] = getText(q.detailId);
@@ -278,7 +298,12 @@ function restoreFormData(data) {
   if (!data) return;
   QUESTIONS.forEach(q => {
     if (q.type === "text") {
-      setText(q.id, data[q.id]);
+      if (q.noAnswerValue && data[q.id] === q.noAnswerValue) {
+        setRadio(q.id, q.noAnswerValue);
+        setText(q.id, "");
+      } else {
+        setText(q.id, data[q.id]);
+      }
     } else if (q.type === "radio") {
       setRadio(q.id, data[q.id]);
       if (q.detailId) setText(q.detailId, data[q.detailId]);
@@ -294,7 +319,7 @@ function syncAllDetailToggles() {
   QUESTIONS.forEach(q => {
     if (q.type === "radio" && q.detailId) {
       const checked = getRadio(q.id);
-      toggleDetail(q.detailId, q.detailShowValues.includes(checked));
+      toggleDetailGroup(q, q.detailShowValues.includes(checked));
     }
   });
 }
@@ -304,10 +329,30 @@ function setupDetailToggles() {
     if (q.type === "radio" && q.detailId) {
       document.querySelectorAll(`input[name="${q.id}"]`).forEach(r =>
         r.addEventListener("change", () =>
-          toggleDetail(q.detailId, q.detailShowValues.includes(r.value))
+          toggleDetailGroup(q, q.detailShowValues.includes(r.value))
         )
       );
     }
+  });
+}
+
+/* ============================================================
+   「回答しない」ラジオ ⇔ テキストエリアの相互排他制御（text型のみ）
+   ・「回答しない」を選ぶとテキストエリアを空にする
+   ・テキストエリアに入力すると「回答しない」の選択を解除する
+   ============================================================ */
+function setupNoAnswerToggles() {
+  QUESTIONS.forEach(q => {
+    if (q.type !== "text" || !q.noAnswerValue) return;
+    const radio    = document.querySelector(`input[name="${q.id}"][value="${q.noAnswerValue}"]`);
+    const textarea = document.getElementById(q.id);
+    if (!radio || !textarea) return;
+    radio.addEventListener("change", () => {
+      if (radio.checked) textarea.value = "";
+    });
+    textarea.addEventListener("input", () => {
+      if (textarea.value.trim()) radio.checked = false;
+    });
   });
 }
 
@@ -329,12 +374,15 @@ function validate(data) {
 /* ============================================================
    統計用データの抽出（Analyticsシート行）
    ラジオは選択肢の表示テキストに変換し、テキスト欄はそのまま送る。
+   「回答しない」が選ばれた場合は "回答しない" という文字列にする。
    ============================================================ */
 function buildAnalyticsPayload(data) {
   const payload = {};
   QUESTIONS.forEach(q => {
     if (q.type === "text") {
-      payload[q.id] = data[q.id] || "";
+      payload[q.id] = (q.noAnswerValue && data[q.id] === q.noAnswerValue)
+        ? "回答しない"
+        : (data[q.id] || "");
     } else if (q.type === "radio") {
       payload[q.id] = data[q.id] ? radioOptionLabel(q, data[q.id]) : "";
       if (q.detailId) payload[q.detailId] = data[q.detailId] || "";
@@ -474,7 +522,10 @@ function renderViewMode(data, options = {}) {
 
   const rows = QUESTIONS.map(q => {
     if (q.type === "text") {
-      return { q: q.label, a: data[q.id] || "未回答" };
+      const text = (q.noAnswerValue && data[q.id] === q.noAnswerValue)
+        ? "回答しない"
+        : (data[q.id] || "未回答");
+      return { q: q.label, a: text };
     }
     const base = radioOptionLabel(q, data[q.id]);
     const detail = q.detailId && data[q.detailId] && data[q.detailId].trim()
@@ -768,6 +819,9 @@ async function checkFriendship() {
 
   /* ----- 条件付き表示（Q11・Q12 の詳細欄）の初期化 ----- */
   setupDetailToggles();
+
+  /* ----- 「回答しない」⇔ 自由記述の相互排他制御の初期化 ----- */
+  setupNoAnswerToggles();
 
   /* ----- localStorage から下書き復元 ----- */
   try {

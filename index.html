@@ -46,27 +46,32 @@
 
 <!-- Q5 -->
 <label>Q5 将来は何歳くらいまで働きたいですか？定年後も再雇用や非正規雇用で働き続けたいですか？</label>
-<label><input type="radio" name="q5" value="a5-no">回答しない</label>
+<label><input type="radio" name="q5" value="a5_no">回答しない</label>
 <textarea id="q5" class="detail-textarea"></textarea>
 
 <!-- Q6 -->
 <label>Q6 将来、自分の親の介護が必要になった場合の現時点での計画はありますか？</label>
+<label><input type="radio" name="q6" value="a6_no">回答しない</label>
 <textarea id="q6" class="detail-textarea"></textarea>
 
 <!-- Q7 -->
 <label>Q7 年収はいくらですか？今年の見込み年収を教えてください。副業があれば、本業、副業それぞれいくらかも教えてください。</label>
+<label><input type="radio" name="q7" value="a7_no">回答しない</label>
 <textarea id="q7" class="detail-textarea"></textarea>
 
 <!-- Q8 -->
 <label>Q8 貯金はいくらありますか？現金での貯金額を教えてください。</label>
+<label><input type="radio" name="q8" value="a8_no">回答しない</label>
 <textarea id="q8" class="detail-textarea"></textarea>
 
 <!-- Q9 -->
 <label>Q9 株などの金融資産や不動産など、現金以外での貯蓄があれば、何を持っているか、必要であれば現金化できるようなものか教えてください。</label>
+<label><input type="radio" name="q9" value="a9_no">回答しない</label>
 <textarea id="q9" class="detail-textarea"></textarea>
 
 <!-- Q10 -->
 <label>Q10 現在の支出状況について教えてください。</label>
+<label><input type="radio" name="q10" value="a10_no">回答しない</label>
 <textarea id="q10" class="detail-textarea"></textarea>
 
 <!-- Q11 -->
@@ -75,38 +80,45 @@
 <label><input type="radio" name="q11" value="a11-2">共同口座を作り、生活費や将来のための貯蓄を定期的にお互い入金する</label>
 <label><input type="radio" name="q11" value="a11-3">原則それぞれで管理し、支出が必要になるタイミングで支払う</label>
 <label><input type="radio" name="q11" value="a11-4">その他</label>
-<textarea id="q11Detail" class="detail-textarea"></textarea>
-<label><input type="radio" name="q11" value="a11-5">回答しない</label>
+<textarea id="q11Detail" class="detail-textarea" style="display:none"></textarea>
+<label><input type="radio" name="q11" value="a11_no">回答しない</label>
 
 <!-- Q12 -->
 <label>Q12 大きい買い物をするときは個人の買い物であっても相談したいですか？</label>
 
 <label><input type="radio" name="q12" value="a12-1">大きい額のときは相談したい、してほしい</label>
-<label>いくら以上ですか？</label><textarea id="q12Detail" class="detail-textarea"></textarea>
+<label id="q12DetailLabel" style="display:none">いくら以上ですか？</label><textarea id="q12Detail" class="detail-textarea" style="display:none"></textarea>
 <label><input type="radio" name="q12" value="a12-2">個人の買い物は相談しなくてよい</label>
+<label><input type="radio" name="q12" value="a12_no">回答しない</label>
 
 <!-- Q13 -->
 <label>Q13 毎月どれくらい貯蓄したいですか？</label>
+<label><input type="radio" name="q13" value="a13_no">回答しない</label>
 <textarea id="q13" class="detail-textarea"></textarea>
 
 <!-- Q14 -->
 <label>Q14 投資はしたいですか？</label>
+<label><input type="radio" name="q14" value="a14_no">回答しない</label>
 <textarea id="q14" class="detail-textarea"></textarea>
 
 <!-- Q15 -->
 <label>Q15 保険への加入や、すでに加入している方はプランの変更など考えていますか？</label>
+<label><input type="radio" name="q15" value="a15_no">回答しない</label>
 <textarea id="q15" class="detail-textarea"></textarea>
 
 <!-- Q16 -->
 <label>Q16 現在の勤め先で、結婚休暇などの結婚支援制度はありますか？あれば具体的に教えてください。</label>
+<label><input type="radio" name="q16" value="a16_no">回答しない</label>
 <textarea id="q16" class="detail-textarea"></textarea>
 
 <!-- Q17 -->
 <label>Q17 現在の勤め先で、出産・育児支援制度はどんなものがありますか？</label>
+<label><input type="radio" name="q17" value="a17_no">回答しない</label>
 <textarea id="q17" class="detail-textarea"></textarea>
 
 <!-- Q18 -->
 <label>Q18 死亡時や働けなくなった時、会社独自の給与補償のようなものはありますか？</label>
+<label><input type="radio" name="q18" value="a18_no">回答しない</label>
 <textarea id="q18" class="detail-textarea"></textarea>
 
 <!-- Q19 -->
@@ -114,18 +126,21 @@
 <label><input type="radio" name="q19" value="a19-1">大きめのベッドで一緒に寝たい</label>
 <label><input type="radio" name="q19" value="a19-2">同じ寝室でベッドは分けたい</label>
 <label><input type="radio" name="q19" value="a19-3">寝室を分けたい</label>
+<label><input type="radio" name="q19" value="a19_no">回答しない</label>
 
 <!-- Q20 -->
 <label>Q20 結納や両家顔合わせはしますか？</label>
 <label><input type="radio" name="q20" value="a20-1">したい</label>
 <label><input type="radio" name="q20" value="a20-2">するつもりはないがお相手次第</label>
 <label><input type="radio" name="q20" value="a20-3">自身の両親と話していないので後日相談させてほしい</label>
+<label><input type="radio" name="q20" value="a20_no">回答しない</label>
 
 <!-- Q21 -->
 <label>Q21 婚約指輪はほしいですか？もしくはあげたいですか？</label>
 <label><input type="radio" name="q21" value="a21-1">ほしい、もしくはあげたい</label>
 <label><input type="radio" name="q21" value="a21-2">相手が望むならあげたい</label>
 <label><input type="radio" name="q21" value="a21-3">ほしくない、もしくはあげたくない</label>
+<label><input type="radio" name="q21" value="a21_no">回答しない</label>
 
 <!-- Q22 -->
 <label>Q22 結婚指輪はほしいですか？</label>
@@ -134,48 +149,58 @@
 <label><input type="radio" name="q22" value="a22-3">自分はいらないが、相手が望むなら相手の分はあげたい</label>
 <label><input type="radio" name="q22" value="a22-4">自分はほしいが、相手の分は相手の意思に任せる</label>
 <label><input type="radio" name="q22" value="a22-5">ほしくないし、あげたくもない</label>
+<label><input type="radio" name="q22" value="a22_no">回答しない</label>
 
 <!-- Q23 -->
 <label>Q23 結婚式はしたいですか？</label>
 <label><input type="radio" name="q23" value="a23-1">したい</label>
 <label><input type="radio" name="q23" value="a23-2">相手が望むならしてもよい</label>
 <label><input type="radio" name="q23" value="a23-3">したくない</label>
+<label><input type="radio" name="q23" value="a23_no">回答しない</label>
 
 <!-- Q24 -->
 <label>Q24 フォトウェディングはしたいですか？</label>
 <label><input type="radio" name="q24" value="a24-1">したい</label>
 <label><input type="radio" name="q24" value="a24-2">相手が望むならしてもよい</label>
 <label><input type="radio" name="q24" value="a24-3">したくない</label>
+<label><input type="radio" name="q24" value="a24_no">回答しない</label>
 
 <!-- Q25 -->
 <label>Q25 新婚旅行は行きたいですか？</label>
 <label><input type="radio" name="q25" value="a25-1">海外旅行に行きたい</label>
 <label><input type="radio" name="q25" value="a25-2">国内旅行に行きたい</label>
 <label><input type="radio" name="q25" value="a25-3">新婚旅行に行くことはあまり考えていない</label>
+<label><input type="radio" name="q25" value="a25_no">回答しない</label>
 
 <!-- Q26 -->
 <label>Q26 婚前契約書の作成はしたいですか？</label>
 <label><input type="radio" name="q26" value="a26-1">作成したい</label>
 <label><input type="radio" name="q26" value="a26-2">特に考えたことがない</label>
+<label><input type="radio" name="q26" value="a26_no">回答しない</label>
 
 <!-- Q27 -->
 <label>Q27 真剣交際前に告知していた以外に持病やアレルギーはありますか？もしもの時病院で家族として伝えられるように些細なことも伝えておきましょう。</label>
+<label><input type="radio" name="q27" value="a27_no">回答しない</label>
 <textarea id="q27" class="detail-textarea"></textarea>
 
 <!-- Q28 -->
 <label>Q28 日常的に服薬している薬などはありますか？それらを記録しているお薬手帳もしくはスマホアプリなどをパートナーと共有しておきましょう。</label>
+<label><input type="radio" name="q28" value="a28_no">回答しない</label>
 <textarea id="q28" class="detail-textarea"></textarea>
 
 <!-- Q29 -->
 <label>Q29 持病やアレルギーを抑えるための頓服薬などはありますか？ある場合はどこに保管、所持するようにしているかも教えてください。また使い方が特殊なものはパートナーが補助できるように使い方も事前に教えておきましょう。</label>
+<label><input type="radio" name="q29" value="a29_no">回答しない</label>
 <textarea id="q29" class="detail-textarea"></textarea>
 
 <!-- Q30 -->
 <label>Q30 過去の既往歴、手術歴はありますか？いつも病院の問診票で書いているような、医師に伝えるべき既往歴についてパートナーとも共有しておきましょう。</label>
+<label><input type="radio" name="q30" value="a30_no">回答しない</label>
 <textarea id="q30" class="detail-textarea"></textarea>
 
 <!-- Q31 -->
 <label>Q31 もしもの時、延命措置や臓器移植などの希望はありますか？パートナーにも伝えておくようにしましょう。</label>
+<label><input type="radio" name="q31" value="a31_no">回答しない</label>
 <textarea id="q31" class="detail-textarea"></textarea>
 
 <!-- Q32 -->
@@ -184,6 +209,7 @@
 <label><input type="radio" name="q32" value="a32-2">積極的に関わりたいわけではないが、義家族も交えて遊んだり家に来てもよい</label>
 <label><input type="radio" name="q32" value="a32-3">義家族が家に遊びに来てもよいが、そのときは外出するなどあまり会いたくはない</label>
 <label><input type="radio" name="q32" value="a32-4">義家族はあまり家にきてほしくない</label>
+<label><input type="radio" name="q32" value="a32_no">回答しない</label>
 
 <!-- Q33 -->
 <label>Q33 パートナーの友人付き合いについて、どこまで関与しても平気ですか？</label>
@@ -191,6 +217,7 @@
 <label><input type="radio" name="q33" value="a33-2">積極的に関わりたいわけではないが、パートナーの友人も交えて遊んだり家に来てもよい</label>
 <label><input type="radio" name="q33" value="a33-3">パートナーの友人が家に遊びに来てもよいが、そのときは外出するなどあまり会いたくはない</label>
 <label><input type="radio" name="q33" value="a33-4">パートナーの友人はあまり家にきてほしくない</label>
+<label><input type="radio" name="q33" value="a33_no">回答しない</label>
 
 <!-- Q34 -->
 <label>Q34 パートナーのSNSへ自身の写真が掲載されてもよいですか？</label>
@@ -199,6 +226,7 @@
 <label><input type="radio" name="q34" value="a34-3">掲載してもよいが公開前に相談してほしい、写真のチェックをしたい</label>
 <label><input type="radio" name="q34" value="a34-4">顔がわからないような写真であれば写っていてもよい</label>
 <label><input type="radio" name="q34" value="a34-5">掲載しないでほしい</label>
+<label><input type="radio" name="q34" value="a34_no">回答しない</label>
 
 <!-- Q35 -->
 <label>Q35 結婚後、定期的な話し合いの機会を設けますか？</label>
@@ -207,6 +235,7 @@
 <label><input type="radio" name="q35" value="a35-3">半年に1回以上話し合う約束をしたい</label>
 <label><input type="radio" name="q35" value="a35-4">1年に1回以上話し合う約束をしたい</label>
 <label><input type="radio" name="q35" value="a35-5">頻度は決めず、気になったときに話し合いたい</label>
+<label><input type="radio" name="q35" value="a35_no">回答しない</label>
 
 <div class="button-group">
   <button id="submitBtn" type="button">送信</button>
