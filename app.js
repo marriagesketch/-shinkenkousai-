@@ -357,21 +357,6 @@ function setupNoAnswerToggles() {
 }
 
 /* ============================================================
-   バリデーション（すべての設問を必須とする）
-   ============================================================ */
-function validate(data) {
-  const errors = [];
-  QUESTIONS.forEach(q => {
-    if (q.type === "text") {
-      if (!data[q.id] || !data[q.id].trim()) errors.push(`${q.label}`);
-    } else if (q.type === "radio") {
-      if (!data[q.id]) errors.push(`${q.label}`);
-    }
-  });
-  return errors;
-}
-
-/* ============================================================
    統計用データの抽出（Analyticsシート行）
    ラジオは選択肢の表示テキストに変換し、テキスト欄はそのまま送る。
    「回答しない」が選ばれた場合は "回答しない" という文字列にする。
@@ -855,13 +840,7 @@ async function checkFriendship() {
 
   /* ----- 送信ボタン ----- */
   document.getElementById("submitBtn").addEventListener("click", () => {
-    const data   = collectFormData();
-    const errors = validate(data);
-
-    if (errors.length > 0) {
-      alert("以下の項目を入力・選択してください。\n\n" + errors.join("\n"));
-      return;
-    }
+    const data = collectFormData();
 
     try { localStorage.setItem(DRAFT_KEY, JSON.stringify(data)); } catch (_) {}
 
