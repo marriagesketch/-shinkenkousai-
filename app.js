@@ -278,7 +278,7 @@ function collectFormData() {
   const data = {};
   QUESTIONS.forEach(q => {
     if (q.type === "text") {
-      if (q.noAnswerValue && getRadio(q.id) === q.noAnswerValue) {
+      if (q.noAnswerValue && isNoAnswerChecked(q)) {
         data[q.id] = q.noAnswerValue;
       } else {
         data[q.id] = getText(q.id);
@@ -299,9 +299,10 @@ function restoreFormData(data) {
   QUESTIONS.forEach(q => {
     if (q.type === "text") {
       if (q.noAnswerValue && data[q.id] === q.noAnswerValue) {
-        setRadio(q.id, q.noAnswerValue);
+        setNoAnswerChecked(q, true);
         setText(q.id, "");
       } else {
+        setNoAnswerChecked(q, false);
         setText(q.id, data[q.id]);
       }
     } else if (q.type === "radio") {
@@ -310,6 +311,7 @@ function restoreFormData(data) {
     }
   });
   syncAllDetailToggles();
+  syncAllNoAnswerToggles();
 }
 
 /* ============================================================
@@ -337,22 +339,50 @@ function setupDetailToggles() {
 }
 
 /* ============================================================
-   「回答しない」ラジオ ⇔ テキストエリアの相互排他制御（text型のみ）
-   ・「回答しない」を選ぶとテキストエリアを空にする
-   ・テキストエリアに入力すると「回答しない」の選択を解除する
+   「回答しない」チェックボックス ⇔ テキストエリアの表示制御（text型のみ）
+   ・デフォルトはテキストエリアを表示
+   ・「回答しない」にチェックすると、テキストエリアを空にして非表示にする
+   ・チェックを外すとテキストエリアを再表示する
    ============================================================ */
+function getNoAnswerEl(q) {
+  return document.querySelector(
+    `input[type="checkbox"][name="${q.id}"][value="${q.noAnswerValue}"]`
+  );
+}
+
+function isNoAnswerChecked(q) {
+  const el = getNoAnswerEl(q);
+  return !!(el && el.checked);
+}
+
+function setNoAnswerChecked(q, checked) {
+  const el = getNoAnswerEl(q);
+  if (el) el.checked = checked;
+}
+
+function applyNoAnswerVisibility(q) {
+  const textarea = document.getElementById(q.id);
+  if (!textarea) return;
+  if (isNoAnswerChecked(q)) {
+    textarea.value = "";
+    textarea.style.display = "none";
+  } else {
+    textarea.style.display = "";
+  }
+}
+
+function syncAllNoAnswerToggles() {
+  QUESTIONS.forEach(q => {
+    if (q.type === "text" && q.noAnswerValue) applyNoAnswerVisibility(q);
+  });
+}
+
 function setupNoAnswerToggles() {
   QUESTIONS.forEach(q => {
     if (q.type !== "text" || !q.noAnswerValue) return;
-    const radio    = document.querySelector(`input[name="${q.id}"][value="${q.noAnswerValue}"]`);
-    const textarea = document.getElementById(q.id);
-    if (!radio || !textarea) return;
-    radio.addEventListener("change", () => {
-      if (radio.checked) textarea.value = "";
-    });
-    textarea.addEventListener("input", () => {
-      if (textarea.value.trim()) radio.checked = false;
-    });
+    const el = getNoAnswerEl(q);
+    if (!el) return;
+    el.addEventListener("change", () => applyNoAnswerVisibility(q));
   });
 }
 
@@ -814,6 +844,7 @@ async function checkFriendship() {
     if (saved) restoreFormData(JSON.parse(saved));
   } catch (_) {}
   syncAllDetailToggles();
+  syncAllNoAnswerToggles();
 
   /* ----- 下書き保存 ----- */
   document.getElementById("draftBtn") &&
@@ -832,8 +863,9 @@ async function checkFriendship() {
     if (!confirm("入力内容をすべてクリアしますか？")) return;
 
     document.querySelectorAll(".detail-textarea").forEach(el => (el.value = ""));
-    document.querySelectorAll('input[type="radio"]').forEach(el => (el.checked = false));
+    document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(el => (el.checked = false));
     syncAllDetailToggles();
+    syncAllNoAnswerToggles();
 
     try { localStorage.removeItem(DRAFT_KEY); } catch (_) {}
   });
