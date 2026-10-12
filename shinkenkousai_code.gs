@@ -1,6 +1,7 @@
 /* ============================================================
    婚約前の確認 – GAS バックエンド (Code.gs)
-   スプレッドシートID: YOUR_SPREADSHEET_ID_HERE
+https://docs.google.com/spreadsheets/d/1XTI3NYWxrEAJ-qHIhhM0-6qSGjQtZBzerQGi9LVDwog/edit?usp=sharing
+   スプレッドシートID: 1XTI3NYWxrEAJ-qHIhhM0-6qSGjQtZBzerQGi9LVDwog
    ------------------------------------------------------------
    ・Shares    シート : 共有用の暗号化済み回答（本人／初回閲覧者のみ復号可）
    ・Analytics シート : 統計集計に必要な項目のみを平文で保存
@@ -15,7 +16,7 @@
       （列の並びは下記 COL / ACOL の順）。
    ============================================================ */
 
-var SPREADSHEET_ID  = 'YOUR_SPREADSHEET_ID_HERE';
+var SPREADSHEET_ID  = '1XTI3NYWxrEAJ-qHIhhM0-6qSGjQtZBzerQGi9LVDwog';
 var SHARES_SHEET     = 'Shares';
 var ANALYTICS_SHEET  = 'Analytics';
 var SCHEMA_VERSION   = 1;
