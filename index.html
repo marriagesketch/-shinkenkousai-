@@ -2,15 +2,46 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<meta name="theme-color" content="#f48ca0"/>
 <title>婚約前の確認</title>
 <link rel="stylesheet" href="style.css"/>
 <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-
 </head>
 
 <body>
-<div class="container">
+
+<!-- 読み込み中／エラー表示（パートナー確認中など） -->
+<div id="publicView" class="public-view container"></div>
+
+<!-- パートナー未登録（または交際終了）の場合に表示 -->
+<div id="partnerRequired" class="container cta-card partner-required" style="display:none">
+  <p class="cta-title">パートナー登録が必要です</p>
+  <p class="cta-text">
+    婚約前の確認は、真剣交際のパートナー登録が完了した方のみご利用いただけます。<br>
+    先にパートナー登録を済ませてください。
+  </p>
+  <a href="https://liff.line.me/2010312230-xUsYz0UB" class="btn-primary cta-btn" style="text-decoration:none; text-align:center;">
+    パートナー登録はこちら
+  </a>
+</div>
+
+<!-- スクショ抑止ウォーターマーク（お相手の回答を閲覧中のみ表示） -->
+<div id="screenshotWatermark" aria-hidden="true"></div>
+
+<!-- アプリ本体 -->
+<div id="app" class="app-shell container" style="display:none">
+
+  <header class="app-bar">
+    <span class="app-bar-title" id="appBarTitle">婚約前の確認</span>
+    <span id="saveStatus" class="save-status">
+      <svg viewBox="0 0 24 24" class="save-status-icon"><path d="M7 18a4 4 0 0 1-.6-7.96A5 5 0 0 1 16 9.5a3.5 3.5 0 0 1 .5 6.98" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      下書き保存中
+    </span>
+  </header>
+
+  <!-- 入力タブ -->
+  <div id="tab-input" class="tab-panel">
 
 <div class="form-header">
   <h1>婚約前の確認</h1>
@@ -18,12 +49,10 @@
   本サービスは、結婚準備にあたっての生活面・お金・もしもの時の希望などの確認を目的としています。<br>
   踏み込んだ質問もあるため、「回答しない」という選択肢も設けております。<br>
   どこまでの情報・価値観を開示するかはお互いで合意の上ご利用ください。<br>
-  プライバシー保護：LINE IDはハッシュ化（暗号化）して保存されます。表示名・プロフィール画像・メールアドレスなどは取得されません。<br>
-  再回答について：同じLINEアカウントから回答された場合、以前の内容は上書きされます。</p>
+  プライバシー保護：LINE IDはハッシュ化（暗号化）して保存されます。表示名・プロフィール画像・メールアドレスなどは取得されません。回答内容は、利用者端末側で暗号化した上で保存されます。運営者は暗号化されたデータのみを保持し、暗号鍵を保持していないため、回答内容を復元又は閲覧することはできません。<br>
+  送信について：入力内容は自動的にこの端末に保存されます。「プレビュー」の「送信する」を押すまでは、お相手には届きません。<br>
+  再回答について：同じLINEアカウントから送信された場合、以前の内容は上書きされます。</p>
 </div>
-
-<!-- ビューモード表示エリア（共有リンクで開いたとき） -->
-<div id="viewMode"></div>
 
 <!-- Q1 -->
 <label>Q1 真剣交際に進もうと思ったのはなぜですか？パートナーのどんなところがいいなと思っていますか？</label>
@@ -237,27 +266,47 @@
 <label><input type="radio" name="q35" value="a35-5">頻度は決めず、気になったときに話し合いたい</label>
 <label><input type="radio" name="q35" value="a35_no">回答しない</label>
 
-<div class="button-group">
-  <button id="submitBtn" type="button">送信</button>
-  <div class="sub-buttons">
-    <button id="draftBtn" type="button">下書き保存</button>
-    <button id="clearBtn" type="button">フォームクリア</button>
   </div>
-</div>
 
-<!-- 共有モーダル -->
-<div id="shareModal" class="modal hidden">
-  <div class="modal-content">
-    <h3>共有</h3>
-    <input id="shareName" placeholder="お名前を入力してください（任意）">
-    <button id="shareBtn">共有する</button>
+  <!-- プレビュータブ（自分／お相手の2名分。入力欄は無く、すべて閲覧専用の表示） -->
+  <div id="tab-preview" class="tab-panel hidden">
+    <button id="sendBtn" class="btn-primary btn-block" type="button">送信する</button>
+    <p id="ownSubmittedAt" class="save-status preview-submitted-at hidden"></p>
+
+    <div class="sub-switcher preview-person-switcher">
+      <button class="sub-switch-btn active" data-person="own" type="button">自分</button>
+      <button class="sub-switch-btn" data-person="partner" type="button" id="partnerTabBtn">お相手</button>
+    </div>
+
+    <div id="previewContent"></div>
   </div>
+
+  <!-- 設定タブ -->
+  <div id="tab-settings" class="tab-panel hidden">
+    <div class="settings-panel">
+      <p class="settings-row-label">自動保存について</p>
+      <p class="settings-row-desc">入力のたびに、この端末へ自動的に保存されます。「送信する」を押すまでは、この端末の中だけに保存され、お相手には届きません。</p>
+      <button id="resetBtn" class="btn-danger" type="button">入力内容を削除して最初から作成する</button>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <button class="nav-btn active" data-tab="input" type="button">
+      <svg viewBox="0 0 24 24"><path d="M4 20h4l10-10-4-4L4 16v4Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <span>入力</span>
+    </button>
+    <button class="nav-btn" data-tab="preview" type="button">
+      <svg viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      <span>プレビュー</span>
+    </button>
+    <button class="nav-btn" data-tab="settings" type="button">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M19.4 13a7.6 7.6 0 0 0 0-2l2-1.4-2-3.4-2.3.8a7.7 7.7 0 0 0-1.8-1l-.3-2.4h-4l-.3 2.4a7.7 7.7 0 0 0-1.8 1l-2.3-.8-2 3.4 2 1.4a7.6 7.6 0 0 0 0 2l-2 1.4 2 3.4 2.3-.8a7.7 7.7 0 0 0 1.8 1l.3 2.4h4l.3-2.4a7.7 7.7 0 0 0 1.8-1l2.3.8 2-3.4-2-1.4Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+      <span>設定</span>
+    </button>
+  </nav>
+
 </div>
 
-<!-- スクショ抑止ウォーターマーク（閲覧モード時のみ表示） -->
-<div id="screenshotWatermark"></div>
-
-</div>
 <script src="app.js"></script>
 </body>
 </html>

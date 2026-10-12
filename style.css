@@ -539,3 +539,116 @@ input[type="range"]{
     font-size:18px;
   }
 }
+
+
+/********************************
+ * 追加：パートナー確認・タブ構成・プレビュー（houseと同じ方式）
+ ********************************/
+
+:root{
+  --pink-bg:#fff6f7; --pink-primary:#f48ca0; --pink-deep:#d96c7d;
+  --pink-border:#f0c5cc; --pink-soft:#fff0f2; --ink-soft:#888888;
+  --shadow-card:0 4px 12px rgba(0,0,0,.08);
+  --radius-lg:22px; --radius-md:16px; --radius-pill:50px;
+}
+
+.hidden{ display:none !important; }
+
+.btn-primary{
+  display:block; width:100%; padding:16px; border:none; border-radius:var(--radius-pill);
+  background:var(--pink-primary); color:#fff; font-size:16px; font-weight:700; cursor:pointer;
+  box-shadow:0 4px 14px rgba(244,140,160,.4);
+}
+.btn-primary:active{ opacity:.92; }
+.btn-primary:disabled{ opacity:.6; cursor:default; }
+.btn-block{ width:100%; margin-bottom:16px; }
+
+/* アプリバー */
+.app-bar{
+  position:sticky; top:0; z-index:10; display:flex; align-items:center;
+  justify-content:space-between; padding:10px 4px 14px; background:var(--pink-bg);
+}
+.app-bar-title{ font-size:17px; font-weight:800; color:#3a3a3a; }
+.save-status{
+  display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:600;
+  color:var(--pink-deep); background:var(--pink-soft); padding:6px 10px;
+  border-radius:var(--radius-pill); transition:opacity .25s;
+}
+.save-status-icon{ width:14px; height:14px; }
+.save-status.just-saved{ opacity:.55; }
+.preview-submitted-at{
+  display:inline-flex; margin:0 0 14px; background:none; padding:0;
+  color:var(--ink-soft); font-size:12px;
+}
+
+/* タブ */
+.tab-panel{ padding-bottom:96px; }
+
+/* 自分／お相手 切替 */
+.sub-switcher{
+  display:flex; gap:6px; margin-bottom:16px; background:#fff;
+  border-radius:var(--radius-pill); padding:4px; box-shadow:var(--shadow-card);
+}
+.sub-switch-btn{
+  flex:1; padding:9px 2px; border:none; border-radius:var(--radius-pill);
+  background:transparent; color:var(--ink-soft); font-size:13px; font-weight:700;
+  cursor:pointer; transition:.2s; white-space:nowrap;
+}
+.sub-switch-btn.active{
+  background:var(--pink-primary); color:#fff; box-shadow:0 2px 8px rgba(244,140,160,.35);
+}
+
+/* ボトムナビ */
+.bottom-nav{
+  position:fixed; left:50%; bottom:0; transform:translateX(-50%);
+  width:min(700px,100%); display:flex; background:#fff;
+  border-top:1px solid var(--pink-border); box-shadow:0 -4px 14px rgba(0,0,0,.06);
+  padding:6px 6px calc(6px + env(safe-area-inset-bottom)); z-index:20;
+}
+.nav-btn{
+  flex:1; display:flex; flex-direction:column; align-items:center; gap:3px;
+  border:none; background:transparent; color:var(--ink-soft);
+  font-size:11px; font-weight:600; padding:6px 0; cursor:pointer;
+}
+.nav-btn svg{ width:22px; height:22px; }
+.nav-btn.active{ color:var(--pink-deep); }
+
+/* 設定 */
+.settings-panel{ background:#fff; border-radius:var(--radius-lg); box-shadow:var(--shadow-card); padding:22px 20px; }
+.settings-row-label{ margin:0 0 8px; font-size:15px; font-weight:700; color:#3a3a3a; }
+.settings-row-desc{ margin:0 0 22px; font-size:13px; line-height:1.8; color:#666; }
+.btn-danger{
+  display:block; width:100%; padding:14px; border:1px solid #e5b2b2;
+  border-radius:var(--radius-pill); background:#fff; color:#c0494f; font-size:14px; font-weight:700; cursor:pointer;
+}
+
+/* 読み込み中・エラー表示 */
+.public-view{ display:none; padding-bottom:40px; }
+.state-card{
+  background:#fff; border-radius:var(--radius-lg); box-shadow:var(--shadow-card);
+  padding:36px 24px; text-align:center; margin:20px 0;
+}
+.state-title{ margin:0 0 8px; font-size:17px; font-weight:700; color:var(--pink-deep); }
+
+/* パートナー未登録の案内 */
+.partner-required{ flex-direction:column; align-items:stretch; text-align:center; margin-top:20px; }
+.partner-required .cta-btn{ margin-top:4px; }
+
+/* プレビュー（お相手未送信・更新ボタン） */
+.preview-empty{
+  background:#fff; border-radius:var(--radius-md); box-shadow:var(--shadow-card);
+  padding:32px 20px; text-align:center; color:var(--ink-soft); font-size:14px; line-height:1.8;
+}
+.partner-refresh-btn{
+  display:block; width:100%; margin:14px 0 0; padding:12px;
+  border:1px solid var(--pink-border); border-radius:var(--radius-pill);
+  background:#fff; color:var(--ink-soft); font-size:13px; font-weight:600; cursor:pointer;
+}
+.partner-refresh-btn:active{ opacity:.8; }
+
+/* スクショ抑止ウォーターマーク */
+#screenshotWatermark{
+  display:none; position:fixed; inset:0; z-index:9999;
+  pointer-events:none; background-repeat:repeat; background-position:top left;
+}
+#screenshotWatermark.show{ display:block; }
