@@ -556,6 +556,14 @@ async function fetchPair(ownerHash) {
   return resp.json();
 }
 
+/* GASの起動待ち（コールドスタート）を、本番の通信より前に済ませておくための軽い呼び出し。
+   結果は使わず、失敗しても何もしない。 */
+function warmUpGas() {
+  try {
+    fetch(`${GAS_ENDPOINT}?action=ping`, { method: "GET" }).catch(() => {});
+  } catch (_) {}
+}
+
 async function submitOwnData() {
   const data = collectFormData();
   const cipherText = await encryptJSON(data, AppState.aesKey);
@@ -840,6 +848,7 @@ function bindEvents() {
 
   /* ----- 送信ボタン：お相手へ直接送信（ペア登録済みのお相手にのみ届く） ----- */
   document.getElementById("sendBtn").addEventListener("click", async () => {
+    warmUpGas(); // 確認ダイアログを見ている間に、GASを先に起こしておく
     const name = AppState.partnerDisplayName || "お相手";
     if (!confirm(`入力内容を${name}さんに送信しますか？\n送信すると、これまでの内容が上書きされます。`)) return;
 
@@ -875,6 +884,7 @@ function bindEvents() {
 
   if (window.__migrationInProgress) return;
 
+  warmUpGas(); // LIFFの初期化と並行して、GASを先に起こしておく
   try {
     await liff.init({ liffId: LIFF_ID });
   } catch (e) {
