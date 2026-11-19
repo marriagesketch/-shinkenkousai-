@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<meta name="theme-color" content="#f48ca0"/>
+<title>婚約前の確認</title>
+<link rel="stylesheet" href="style.css"/>
+<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+
+<body>
+
+<!-- 読み込み中／エラー表示（パートナー確認中など） -->
+<div id="publicView" class="public-view container"></div>
+
+<!-- パートナー未登録（または交際終了）の場合に表示 -->
+<div id="partnerRequired" class="container cta-card partner-required" style="display:none">
+  <p class="cta-title">パートナー登録が必要です</p>
+  <p class="cta-text">
+    婚約前の確認は、真剣交際のパートナー登録が完了した方のみご利用いただけます。<br>
+    先にパートナー登録を済ませてください。
+  </p>
+  <a href="https://liff.line.me/2010312230-xUsYz0UB" class="btn-primary cta-btn" style="text-decoration:none; text-align:center;">
+    パートナー登録はこちら
+  </a>
+</div>
+
+<!-- スクショ抑止ウォーターマーク（お相手の回答を閲覧中のみ表示） -->
+<div id="screenshotWatermark" aria-hidden="true"></div>
+
+<!-- アプリ本体 -->
+<div id="app" class="app-shell container" style="display:none">
+
+  <header class="app-bar">
+    <span class="app-bar-title" id="appBarTitle">婚約前の確認</span>
+    <span id="saveStatus" class="save-status">
+      <svg viewBox="0 0 24 24" class="save-status-icon"><path d="M7 18a4 4 0 0 1-.6-7.96A5 5 0 0 1 16 9.5a3.5 3.5 0 0 1 .5 6.98" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      下書き保存中
+    </span>
+  </header>
+
+  <!-- 入力タブ -->
+  <div id="tab-input" class="tab-panel">
+
+<div class="form-header">
+  <h1>婚約前の確認</h1>
+  <p class="form-description">
+  本サービスは、結婚準備にあたっての生活面・お金・もしもの時の希望などの確認を目的としています。<br>
+  踏み込んだ質問もあるため、「回答しない」という選択肢も設けております。<br>
+  どこまでの情報・価値観を開示するかはお互いで合意の上ご利用ください。<br>
+  プライバシー保護：LINE IDはハッシュ化（暗号化）して保存されます。表示名・プロフィール画像・メールアドレスなどは取得されません。回答内容は、利用者端末側で暗号化した上で保存されます。運営者は暗号化されたデータのみを保持し、暗号鍵を保持していないため、回答内容を復元又は閲覧することはできません。<br>
+  送信について：入力内容は自動的にこの端末に保存されます。「プレビュー」の「送信する」を押すまでは、お相手には届きません。<br>
+  再回答について：同じLINEアカウントから送信された場合、以前の内容は上書きされます。</p>
+</div>
+
+<!-- Q1 -->
+<label>Q1 真剣交際に進もうと思ったのはなぜですか？パートナーのどんなところがいいなと思っていますか？</label>
+<textarea id="q1" class="detail-textarea"></textarea>
+
+<!-- Q2 -->
+<label>Q2 この際だから言っておきたい、パートナーへの不満やもっとしてほしいことを伝えておきましょう。</label>
+<textarea id="q2" class="detail-textarea"></textarea>
+
+<!-- Q3 -->
+<label>Q3 パートナーから何と呼ばれたいですか？</label>
+<textarea id="q3" class="detail-textarea"></textarea>
+
+<!-- Q4 -->
+<label>Q4 家事分担について、ルールを決めておきたいですか？</label>
+<label><input type="radio" name="q4" value="a4-1">決めたい</label>
+<label><input type="radio" name="q4" value="a4-2">一緒に暮らし始めてから決めたい</label>
+<label><input type="radio" name="q4" value="a4-3">ルールは決めずにやっていきたい</label>
+<label><input type="radio" name="q4" value="a4-4">回答しない</label>
+
+<!-- Q5 -->
+<label>Q5 将来は何歳くらいまで働きたいですか？定年後も再雇用や非正規雇用で働き続けたいですか？</label>
+<label><input type="checkbox" name="q5" value="a5_no">回答しない</label>
+<textarea id="q5" class="detail-textarea"></textarea>
+
+<!-- Q6 -->
+<label>Q6 将来、自分の親の介護が必要になった場合の現時点での計画はありますか？</label>
+<label><input type="checkbox" name="q6" value="a6_no">回答しない</label>
+<textarea id="q6" class="detail-textarea"></textarea>
+
+<!-- Q7 -->
+<label>Q7 年収はいくらですか？今年の見込み年収を教えてください。副業があれば、本業、副業それぞれいくらかも教えてください。</label>
+<label><input type="checkbox" name="q7" value="a7_no">回答しない</label>
+<textarea id="q7" class="detail-textarea"></textarea>
+
+<!-- Q8 -->
+<label>Q8 貯金はいくらありますか？現金での貯金額を教えてください。</label>
+<label><input type="checkbox" name="q8" value="a8_no">回答しない</label>
+<textarea id="q8" class="detail-textarea"></textarea>
+
+<!-- Q9 -->
+<label>Q9 株などの金融資産や不動産など、現金以外での貯蓄があれば、何を持っているか、必要であれば現金化できるようなものか教えてください。</label>
+<label><input type="checkbox" name="q9" value="a9_no">回答しない</label>
+<textarea id="q9" class="detail-textarea"></textarea>
+
+<!-- Q10 -->
+<label>Q10 現在の支出状況について教えてください。</label>
+<label><input type="checkbox" name="q10" value="a10_no">回答しない</label>
+<textarea id="q10" class="detail-textarea"></textarea>
+
+<!-- Q11 -->
+<label>Q11 お金の管理方法はどうしたいですか？</label>
+<label><input type="radio" name="q11" value="a11-1">どちらかに管理をお願いし、お小遣い制にする</label>
+<label><input type="radio" name="q11" value="a11-2">共同口座を作り、生活費や将来のための貯蓄を定期的にお互い入金する</label>
+<label><input type="radio" name="q11" value="a11-3">原則それぞれで管理し、支出が必要になるタイミングで支払う</label>
+<label><input type="radio" name="q11" value="a11-4">その他</label>
+<textarea id="q11Detail" class="detail-textarea" style="display:none"></textarea>
+<label><input type="radio" name="q11" value="a11_no">回答しない</label>
+
+<!-- Q12 -->
+<label>Q12 大きい買い物をするときは個人の買い物であっても相談したいですか？</label>
+
+<label><input type="radio" name="q12" value="a12-1">大きい額のときは相談したい、してほしい</label>
+<label id="q12DetailLabel" style="display:none">いくら以上ですか？</label><textarea id="q12Detail" class="detail-textarea" style="display:none"></textarea>
+<label><input type="radio" name="q12" value="a12-2">個人の買い物は相談しなくてよい</label>
+<label><input type="radio" name="q12" value="a12_no">回答しない</label>
+
+<!-- Q13 -->
+<label>Q13 毎月どれくらい貯蓄したいですか？</label>
+<label><input type="checkbox" name="q13" value="a13_no">回答しない</label>
+<textarea id="q13" class="detail-textarea"></textarea>
+
+<!-- Q14 -->
+<label>Q14 投資はしたいですか？</label>
+<label><input type="checkbox" name="q14" value="a14_no">回答しない</label>
+<textarea id="q14" class="detail-textarea"></textarea>
+
+<!-- Q15 -->
+<label>Q15 保険への加入や、すでに加入している方はプランの変更など考えていますか？</label>
+<label><input type="checkbox" name="q15" value="a15_no">回答しない</label>
+<textarea id="q15" class="detail-textarea"></textarea>
+
+<!-- Q16 -->
+<label>Q16 現在の勤め先で、結婚休暇などの結婚支援制度はありますか？あれば具体的に教えてください。</label>
+<label><input type="checkbox" name="q16" value="a16_no">回答しない</label>
+<textarea id="q16" class="detail-textarea"></textarea>
+
+<!-- Q17 -->
+<label>Q17 現在の勤め先で、出産・育児支援制度はどんなものがありますか？</label>
+<label><input type="checkbox" name="q17" value="a17_no">回答しない</label>
+<textarea id="q17" class="detail-textarea"></textarea>
+
+<!-- Q18 -->
+<label>Q18 死亡時や働けなくなった時、会社独自の給与補償のようなものはありますか？</label>
+<label><input type="checkbox" name="q18" value="a18_no">回答しない</label>
+<textarea id="q18" class="detail-textarea"></textarea>
+
+<!-- Q19 -->
+<label>Q19 ベッド、寝室について理想はありますか？</label>
+<label><input type="radio" name="q19" value="a19-1">大きめのベッドで一緒に寝たい</label>
+<label><input type="radio" name="q19" value="a19-2">同じ寝室でベッドは分けたい</label>
+<label><input type="radio" name="q19" value="a19-3">寝室を分けたい</label>
+<label><input type="radio" name="q19" value="a19_no">回答しない</label>
+
+<!-- Q20 -->
+<label>Q20 結納や両家顔合わせはしますか？</label>
+<label><input type="radio" name="q20" value="a20-1">したい</label>
+<label><input type="radio" name="q20" value="a20-2">するつもりはないがお相手次第</label>
+<label><input type="radio" name="q20" value="a20-3">自身の両親と話していないので後日相談させてほしい</label>
+<label><input type="radio" name="q20" value="a20_no">回答しない</label>
+
+<!-- Q21 -->
+<label>Q21 婚約指輪はほしいですか？もしくはあげたいですか？</label>
+<label><input type="radio" name="q21" value="a21-1">ほしい、もしくはあげたい</label>
+<label><input type="radio" name="q21" value="a21-2">相手が望むならあげたい</label>
+<label><input type="radio" name="q21" value="a21-3">ほしくない、もしくはあげたくない</label>
+<label><input type="radio" name="q21" value="a21_no">回答しない</label>
+
+<!-- Q22 -->
+<label>Q22 結婚指輪はほしいですか？</label>
+<label><input type="radio" name="q22" value="a22-1">ほしい</label>
+<label><input type="radio" name="q22" value="a22-2">相手が望むならほしい</label>
+<label><input type="radio" name="q22" value="a22-3">自分はいらないが、相手が望むなら相手の分はあげたい</label>
+<label><input type="radio" name="q22" value="a22-4">自分はほしいが、相手の分は相手の意思に任せる</label>
+<label><input type="radio" name="q22" value="a22-5">ほしくないし、あげたくもない</label>
+<label><input type="radio" name="q22" value="a22_no">回答しない</label>
+
+<!-- Q23 -->
+<label>Q23 結婚式はしたいですか？</label>
+<label><input type="radio" name="q23" value="a23-1">したい</label>
+<label><input type="radio" name="q23" value="a23-2">相手が望むならしてもよい</label>
+<label><input type="radio" name="q23" value="a23-3">したくない</label>
+<label><input type="radio" name="q23" value="a23_no">回答しない</label>
+
+<!-- Q24 -->
+<label>Q24 フォトウェディングはしたいですか？</label>
+<label><input type="radio" name="q24" value="a24-1">したい</label>
+<label><input type="radio" name="q24" value="a24-2">相手が望むならしてもよい</label>
+<label><input type="radio" name="q24" value="a24-3">したくない</label>
+<label><input type="radio" name="q24" value="a24_no">回答しない</label>
+
+<!-- Q25 -->
+<label>Q25 新婚旅行は行きたいですか？</label>
+<label><input type="radio" name="q25" value="a25-1">海外旅行に行きたい</label>
+<label><input type="radio" name="q25" value="a25-2">国内旅行に行きたい</label>
+<label><input type="radio" name="q25" value="a25-3">新婚旅行に行くことはあまり考えていない</label>
+<label><input type="radio" name="q25" value="a25_no">回答しない</label>
+
+<!-- Q26 -->
+<label>Q26 婚前契約書の作成はしたいですか？</label>
+<label><input type="radio" name="q26" value="a26-1">作成したい</label>
+<label><input type="radio" name="q26" value="a26-2">特に考えたことがない</label>
+<label><input type="radio" name="q26" value="a26_no">回答しない</label>
+
+<!-- Q27 -->
+<label>Q27 真剣交際前に告知していた以外に持病やアレルギーはありますか？もしもの時病院で家族として伝えられるように些細なことも伝えておきましょう。</label>
+<label><input type="checkbox" name="q27" value="a27_no">回答しない</label>
+<textarea id="q27" class="detail-textarea"></textarea>
+
+<!-- Q28 -->
+<label>Q28 日常的に服薬している薬などはありますか？それらを記録しているお薬手帳もしくはスマホアプリなどをパートナーと共有しておきましょう。</label>
+<label><input type="checkbox" name="q28" value="a28_no">回答しない</label>
+<textarea id="q28" class="detail-textarea"></textarea>
+
+<!-- Q29 -->
+<label>Q29 持病やアレルギーを抑えるための頓服薬などはありますか？ある場合はどこに保管、所持するようにしているかも教えてください。また使い方が特殊なものはパートナーが補助できるように使い方も事前に教えておきましょう。</label>
+<label><input type="checkbox" name="q29" value="a29_no">回答しない</label>
+<textarea id="q29" class="detail-textarea"></textarea>
+
+<!-- Q30 -->
+<label>Q30 過去の既往歴、手術歴はありますか？いつも病院の問診票で書いているような、医師に伝えるべき既往歴についてパートナーとも共有しておきましょう。</label>
+<label><input type="checkbox" name="q30" value="a30_no">回答しない</label>
+<textarea id="q30" class="detail-textarea"></textarea>
+
+<!-- Q31 -->
+<label>Q31 もしもの時、延命措置や臓器移植などの希望はありますか？パートナーにも伝えておくようにしましょう。</label>
+<label><input type="checkbox" name="q31" value="a31_no">回答しない</label>
+<textarea id="q31" class="detail-textarea"></textarea>
+
+<!-- Q32 -->
+<label>Q32 義家族付き合いについて、どこまで関与しても平気ですか？</label>
+<label><input type="radio" name="q32" value="a32-1">義家族とも積極的に交流したい</label>
+<label><input type="radio" name="q32" value="a32-2">積極的に関わりたいわけではないが、義家族も交えて遊んだり家に来てもよい</label>
+<label><input type="radio" name="q32" value="a32-3">義家族が家に遊びに来てもよいが、そのときは外出するなどあまり会いたくはない</label>
+<label><input type="radio" name="q32" value="a32-4">義家族はあまり家にきてほしくない</label>
+<label><input type="radio" name="q32" value="a32_no">回答しない</label>
+
+<!-- Q33 -->
+<label>Q33 パートナーの友人付き合いについて、どこまで関与しても平気ですか？</label>
+<label><input type="radio" name="q33" value="a33-1">パートナーの友人とも積極的に交流したい</label>
+<label><input type="radio" name="q33" value="a33-2">積極的に関わりたいわけではないが、パートナーの友人も交えて遊んだり家に来てもよい</label>
+<label><input type="radio" name="q33" value="a33-3">パートナーの友人が家に遊びに来てもよいが、そのときは外出するなどあまり会いたくはない</label>
+<label><input type="radio" name="q33" value="a33-4">パートナーの友人はあまり家にきてほしくない</label>
+<label><input type="radio" name="q33" value="a33_no">回答しない</label>
+
+<!-- Q34 -->
+<label>Q34 パートナーのSNSへ自身の写真が掲載されてもよいですか？</label>
+<label><input type="radio" name="q34" value="a34-1">掲載してもよい</label>
+<label><input type="radio" name="q34" value="a34-2">鍵付きのアカウントであれば掲載してもよい</label>
+<label><input type="radio" name="q34" value="a34-3">掲載してもよいが公開前に相談してほしい、写真のチェックをしたい</label>
+<label><input type="radio" name="q34" value="a34-4">顔がわからないような写真であれば写っていてもよい</label>
+<label><input type="radio" name="q34" value="a34-5">掲載しないでほしい</label>
+<label><input type="radio" name="q34" value="a34_no">回答しない</label>
+
+<!-- Q35 -->
+<label>Q35 結婚後、定期的な話し合いの機会を設けますか？</label>
+<label><input type="radio" name="q35" value="a35-1">月に1回以上話し合う約束をしたい</label>
+<label><input type="radio" name="q35" value="a35-2">1シーズンに1回以上話し合う約束をしたい</label>
+<label><input type="radio" name="q35" value="a35-3">半年に1回以上話し合う約束をしたい</label>
+<label><input type="radio" name="q35" value="a35-4">1年に1回以上話し合う約束をしたい</label>
+<label><input type="radio" name="q35" value="a35-5">頻度は決めず、気になったときに話し合いたい</label>
+<label><input type="radio" name="q35" value="a35_no">回答しない</label>
+
+  </div>
+
+  <!-- プレビュータブ（自分／お相手の2名分。入力欄は無く、すべて閲覧専用の表示） -->
+  <div id="tab-preview" class="tab-panel hidden">
+    <button id="sendBtn" class="btn-primary btn-block" type="button">送信する</button>
+    <div id="draftActions" class="action-grid">
+      <button id="cloudDraftBtn" class="btn-ghost" type="button">下書き保存</button>
+      <button id="resetBtn" class="btn-clear" type="button">フォームクリア</button>
+    </div>
+    <p id="ownSubmittedAt" class="save-status preview-submitted-at hidden"></p>
+
+    <div class="sub-switcher preview-person-switcher">
+      <button class="sub-switch-btn active" data-person="own" type="button">自分</button>
+      <button class="sub-switch-btn" data-person="partner" type="button" id="partnerTabBtn">お相手</button>
+    </div>
+
+    <div id="previewContent"></div>
+  </div>
+
+
+  <nav class="bottom-nav">
+    <button class="nav-btn active" data-tab="input" type="button">
+      <svg viewBox="0 0 24 24"><path d="M4 20h4l10-10-4-4L4 16v4Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <span>入力</span>
+    </button>
+    <button class="nav-btn" data-tab="preview" type="button">
+      <svg viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      <span>プレビュー</span>
+    </button>
+  </nav>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
